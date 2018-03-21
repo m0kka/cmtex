@@ -210,28 +210,28 @@
 {\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
 {\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
 \ignorespaces}
-{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mSatz}}
+{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mSatz}}
 
 \newenvironment{lemma}[1][none]
 {\ifthenelse{\equal{#1}{none}}
 {\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
 {\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
 \ignorespaces}
-{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mLemma}}
+{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mLemma}}
 
 \newenvironment{corollary}[1][none]
 {\ifthenelse{\equal{#1}{none}}
 {\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
 {\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
 \ignorespaces}
-{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mCorollary}}
+{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mCorollary}}
 
 \newenvironment{theorem}[1][none]
 {\ifthenelse{\equal{#1}{none}}
 {\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
 {\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
 \ignorespaces}
-{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mTheorem}}
+{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mTheorem}}
 
 \newenvironment{remark}[1][none]
 {\ifthenelse{\equal{#1}{none}}
@@ -253,7 +253,7 @@
  $\triangle$
 \end{flushright}}
 
-\newcommand{\proofhere}{\br\hyperref[proof:\themDefinition]{Beweis.}}
+\newcommand{\proofhere}{\br\smallskip\hyperref[proof:\themDefinition]{Beweis.}}
 
 \newenvironment{proofofS}[1]
 {\subsubsection{Beweis - Satz \ref{sec:#1}}\label{proof:#1}}
