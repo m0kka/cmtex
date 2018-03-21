@@ -62,7 +62,7 @@
 
 \newcommand{\cmtoc}{
 \addcontentsline{toc}{section}{Inhaltsverzeichnis}
-\tableofcontents
+{\renewcommand{\baselinestretch}{0.8}\tableofcontents}
 \newpage
 }
 
