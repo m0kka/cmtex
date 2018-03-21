@@ -74,7 +74,9 @@
 \newcommand{\cmaddendum}{
 \setcounter{section}{0}
 \renewcommand{\thesection}{\roman{section}}
+\renewcommand{\theHsection}{\roman{section}}
 \renewcommand{\thesubsubsection}{\roman{section}.\arabic{subsection}.\alph{subsubsection}}
+\renewcommand{\theHsubsubsection}{\roman{section}.\arabic{subsection}.\alph{subsubsection}}
 
 \part{Addenda}
 }
