@@ -56,8 +56,8 @@
 }
 
 \newcommand{\cmtodo}{
-\section*{Liste der offenen Aufgaben}
-\addcontentsline{toc}{section}{Liste der offenen Aufgaben}
+\addcontentsline{toc}{section}{Liste der noch zu erledigenden Punkte}
+\listoftodos
 }
 
 \newcommand{\cmtoc}{
