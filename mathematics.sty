@@ -154,17 +154,46 @@
  \providecommand{\proofofEautorefname}{Beweis}
 }
 
+\newtheoremstyle{sDefinition}
+    {\topsep}
+    {\topsep}
+    {}
+    {}
+    {\bfseries\color{maincolor}}
+    {}
+    {.5em}
+    {}
+    
+\newtheoremstyle{sSatz}
+    {\topsep}
+    {\topsep}
+    {}
+    {}
+    {\color{maincolor}}
+    {}
+    {.5em}
+    {}
+    
+\newtheoremstyle{sRemark}
+    {\topsep}
+    {\topsep}
+    {}
+    {}
+    {\itshape\color{maincolor}}
+    {}
+    {.5em}
+    {}
 
-\theoremstyle{definition}
+\theoremstyle{sDefinition}
 \newtheorem{mDefinition}{Definition}[subsection]
 
-\theoremstyle{plain}
+\theoremstyle{sSatz}
 \newtheorem{mSatz}[mDefinition]{Satz}
 \newtheorem{mLemma}[mDefinition]{Lemma}
 \newtheorem{mCorollary}[mDefinition]{Korollar}
 \newtheorem{mTheorem}[mDefinition]{Theorem}
 
-\theoremstyle{remark}
+\theoremstyle{sRemark}
 \newtheorem{mRemark}[mDefinition]{Anmerkung}
 \newtheorem{mExample}[mDefinition]{Beispiel}
 
