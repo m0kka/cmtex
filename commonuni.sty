@@ -1,0 +1,112 @@
+% Common definitions for my uni stuff, mainly style definitions. Based off of jlnostr's texfiles:
+% https://github.com/jlnostr/texfiles
+
+\ProvidesPackage{commonuni}[Common style definitions]
+
+\RequirePackage{fontspec}
+\RequirePackage[ngerman]{babel}
+\RequirePackage{enumitem, listliketab, tabu, multicol, microtype}
+\RequirePackage{graphicx}
+\RequirePackage{stackengine}
+\RequirePackage{titletoc}
+\RequirePackage{marginnote}
+\RequirePackage[dvipsnames,svgnames,usenames,table]{xcolor}
+\RequirePackage[pdfusetitle]{hyperref}
+\RequirePackage{tikz,pgfplots}
+\RequirePackage{setspace}
+\RequirePackage{marvosym}
+\RequirePackage{titlesec}
+\RequirePackage{textcomp}
+
+% Font settings
+\defaultfontfeatures{Ligatures=TeX}
+\setsansfont{Corbel}
+\setmainfont{Palatino Linotype}
+\setmonofont{Consolas}
+
+% Process package options
+\newif\ifcolorized\colorizedtrue
+\newif\ifdisplayrightside\displayrightsidefalse
+\DeclareOption{print}{\colorizedfalse}
+\DeclareOption{rightside}{\displayrightsidetrue}
+\DeclareOption{sans}{\setmainfont{Calibri}}
+\DeclareOption*{\PackageError{commonstyles}{One or more of the provided options does not exist.}{Maybe spell-checking helps?}}
+
+\ProcessOptions*
+
+% Color setup
+\ifcolorized
+	\colorlet{maincolor}{MidnightBlue}
+	\colorlet{secondcolor}{ForestGreen}
+	\colorlet{thirdcolor}{orange}
+\else
+	\colorlet{maincolor}{black}
+	\colorlet{secondcolor}{black}
+	\colorlet{thirdcolor}{black}
+\fi
+
+% pgf setup
+\pgfplotsset{compat=1.15}
+
+% graphicspath
+\graphicspath{{images/}{../images/}}
+
+% header formats
+\titleformat{\section}{\Large\bfseries\sffamily\color{maincolor}}{}{0em}{}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{maincolor!70}}
+\titleformat*{\subsubsection}{\scshape\sffamily\color{maincolor!80}}
+
+% todo-notes
+\ifcolorized
+	\RequirePackage[ngerman, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
+\else
+	\RequirePackage[ngerman, disable]{todonotes}
+\fi
+
+% Title page setup
+\newcommand{\cmauthor}{Michael Merse}
+\newcommand{\cmauthorsuffix}{\footnote{\url{http://m0kka.me}}}
+\newcommand{\cmsubject}{}
+\newcommand{\cmsubsubject}{}
+\newcommand{\cmtitle}{}
+\newcommand{\cmsubtitle}{}
+\newcommand{\cmsemester}{}
+\newcommand{\cmdate}{\today}
+
+\newcommand{\subject}[1]{\renewcommand{\cmsubject}{#1}}
+\newcommand{\subsubject}[1]{\renewcommand{\cmsubsubject}{#1}}
+\newcommand{\semester}[1]{\renewcommand{\cmsemester}{#1}}
+\newcommand{\datum}[1]{\renewcommand{\cmdate}{#1}}
+\newcommand{\authorsuffix}[1]{\renewcommand{\cmauthorsuffix}{#1}}
+\newcommand{\subtitle}[1]{\renewcommand{\cmsubtitle}{#1}}
+
+\renewcommand{\title}[1]{\renewcommand{\cmtitle}{#1}}
+\renewcommand{\author}[1]{\renewcommand{\cmauthor}{#1}}
+
+
+\renewcommand{\maketitle}{
+\pagenumbering{gobble}
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE\cmsubject\par}
+	\vspace{1cm}
+	{\scshape\Large\cmsubsubject\par}
+	\vspace{1.5cm}
+	{\huge\bfseries\cmtitle\par}
+	\vspace{1cm}
+	{\Large\cmsubtitle\par}
+	\vspace{2cm}
+	{\Large\itshape\cmauthor\cmauthorsuffix\par}
+	\vfill
+	\cmsemester
+	\vfill
+	{\large\cmdate\par}
+\end{titlepage}
+\newpage
+}
+
+
+
+
+
+

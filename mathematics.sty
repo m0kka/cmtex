@@ -1,0 +1,263 @@
+% Common mathematics definitions, based off of jlnostr's texfiles:
+% https://github.com/jlnostr/texfiles
+
+\ProvidesPackage{mathematics}[2018/02/10 Common mathematical things]
+\RequirePackage{mathtools, amsmath, amsfonts, amssymb, amsthm}
+\RequirePackage{xstring}
+
+\newif\ifcolorized\colorizedtrue
+\DeclareOption{print}{\colorizedfalse}
+\ProcessOptions\relax
+
+% Utility maths
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\No}{\bb{N}_0}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\K}{\bb{K}}
+\newcommand{\nullset}{\{0\}}
+
+\newcommand{\im}[1]{\mathrm{im}\left(#1\right)}
+\newcommand{\folge}[2]{\left( #1_{#2}\right)_{#2\in\N}}
+\newcommand{\tfolge}[3]{\left( #1_{#2_{#3}}\right)_{#3\in\N}}
+
+\newcommand{\dif}{\;\mathrm{d}}
+
+\newcommand{\dx}[2][]{\frac{d}{dx^{#1}}\left(#2\right)}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\vektor}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\schritt}[2][l]{
+	\color{secondcolor}
+	\IfEqCase{#1}
+	{
+		{l}{\left\downarrow\quad #2 \right.} % arrow on the left side
+		{r}{\left. #2 \quad\right\downarrow} % arrow on the right side
+		{n}{#2} % without arrow
+	}
+}
+\newcommand{\weil}[2][l]{\schritt[#1]{\text{#2}}}
+
+% increase the max. numbers of columns of matrizes (pmatrix, bmatrix, matrix)
+\setcounter{MaxMatrixCols}{20}
+
+% Umlauts in maths env
+\newcommand{\mumlaut}[1]{\ddot{#1}}
+\newcommand{\mue}{\mumlaut{u}}
+\newcommand{\moe}{\mumlaut{o}}
+\newcommand{\mae}{\mumlaut{a}}
+
+% Äquivalenzklassen
+\newcommand{\aek}[1]{\ensuremath{\left[#1\right]}}
+\newcommand{\aekf}[1]{\ensuremath{\left[\left( #1\right)\right]}}
+
+% QED
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+
+% oBdA
+\newcommand{\obda}{\underline{o.B.d.A}: }
+
+% Strikethrough text
+\newcommand{\hcancel}[1]{
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red] (tocancel.south west) -- (tocancel.north east);
+    }
+}
+
+\newcommand{\ihcancel}[1]{
+\text{\hcancel{$#1$}}
+}
+
+% arrow of contradiction and checkmark
+\RequirePackage{wasysym}
+\let\oldlightning\lightning
+\let\oldcheckmark\checkmark
+\ifcolorized
+	\renewcommand{\lightning}{\mbox{\quad\color{red}\oldlightning}}
+	\renewcommand{\checkmark}{\mbox{\quad\color{green}\oldcheckmark}}
+\else
+	\renewcommand{\lightning}{\mbox{\quad\color{black}\large\oldlightning}}
+	\renewcommand{\checkmark}{\mbox{\quad\color{black}\large\oldcheckmark}}
+\fi
+
+\renewcommand{\mvchr}[1]{\mbox{\mvs\symbol{#1}}}
+
+% Environment and commands for inductive proofs
+\newcommand{\idv}{\item[Induktionsvoraussetzung]}
+\newcommand{\idb}{\item[Induktionsbehauptung]}
+
+\newenvironment{idp}
+{\paragraph{Beweis durch Induktion.}\begin{description}}
+{\end{description}Die Behauptung folgt durch Induktion.}
+
+\newenvironment{ida}[1]{\item[Induktionsanfang]$#1$}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
+\newenvironment{ids}[2]{\item[Induktionsschritt]$#1\to#2$\\Angenommen die Behauptung gelte für $#1\in\N$.\\
+\ZZ: Die Behauptung gilt für $#2$.\\}{}
+
+\let\lker\ker
+
+\renewcommand{\ker}[1]{\mathrm{ker}\left(#1\right)}
+
+\allowdisplaybreaks
+\newcommand{\br}{~\\}
+\everymath{\displaystyle}
+
+% Math-type roman lists
+\newenvironment{inumerate}{\begin{enumerate}[label=\textit{\roman*})]}
+{\end{enumerate}}
+
+% Alpha lists
+\newenvironment{anumerate}{\begin{enumerate}[label=\alph*)]}
+{\end{enumerate}}
+
+% Case-List
+\newenvironment{caselist}{\begin{enumerate}[label=Fall \arabic*]}{\end{enumerate}}
+
+% Roman numbers in literals
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+% Bracket redefinitions
+\newcommand{\klbrace}{\left\{}
+\newcommand{\krbrace}{\right\}}
+
+% Sectioning definitions
+
+\renewcommand{\theequation}{\themDefinition\alph{equation}}
+
+\addto\extrasngerman{
+ \providecommand{\mDefinitionautorefname}{Abschnitt}
+}
+
+\addto\extrasgerman{
+ \providecommand{\proofofSautorefname}{Beweis}
+}
+\addto\extrasgerman{
+ \providecommand{\proofofLautorefname}{Beweis}
+}
+\addto\extrasgerman{
+ \providecommand{\proofofCautorefname}{Beweis}
+}
+\addto\extrasgerman{
+ \providecommand{\proofofTautorefname}{Beweis}
+}
+
+\addto\extrasgerman{
+ \providecommand{\proofofRautorefname}{Beweis}
+}
+
+\addto\extrasgerman{
+ \providecommand{\proofofEautorefname}{Beweis}
+}
+
+
+\theoremstyle{definition}
+\newtheorem{mDefinition}{Definition}[subsection]
+
+\theoremstyle{plain}
+\newtheorem{mSatz}[mDefinition]{Satz}
+\newtheorem{mLemma}[mDefinition]{Lemma}
+\newtheorem{mCorollary}[mDefinition]{Korollar}
+\newtheorem{mTheorem}[mDefinition]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{mRemark}[mDefinition]{Anmerkung}
+\newtheorem{mExample}[mDefinition]{Beispiel}
+
+
+\newenvironment{definition}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mDefinition} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition}}
+{\begin{mDefinition}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition (#1)}}
+\ignorespaces}
+{\end{mDefinition}}
+
+\newenvironment{satz}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
+{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
+\ignorespaces}
+{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mSatz}}
+
+\newenvironment{lemma}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
+{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
+\ignorespaces}
+{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mLemma}}
+
+\newenvironment{corollary}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
+{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
+\ignorespaces}
+{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mCorollary}}
+
+\newenvironment{theorem}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
+{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
+\ignorespaces}
+{~\\\hyperref[proof:\themDefinition]{Beweis.}\end{mTheorem}}
+
+\newenvironment{remark}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mRemark} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung}}
+{\begin{mRemark}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung (#1)}}
+\ignorespaces}
+{$\lozenge$\end{mRemark}}
+
+\newenvironment{example}[1][none]
+{\ifthenelse{\equal{#1}{none}}
+{\begin{mExample} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel}}
+{\begin{mExample}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel (#1)}}
+\ignorespaces}
+{$\lozenge$\end{mExample}}
+
+% Proof definitions
+\newcommand{\proofstep}{
+\begin{flushright}
+ $\triangle$
+\end{flushright}}
+
+\newcommand{\proofhere}{\br\hyperref[proof:\themDefinition]{Beweis.}}
+
+\newenvironment{proofofS}[1]
+{\subsubsection{Beweis - Satz \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofL}[1]
+{\subsubsection{Beweis - Lemma \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofC}[1]
+{\subsubsection{Beweis - Korollar \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofT}[1]
+{\subsubsection{Beweis - Theorem \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofR}[1]
+{\subsubsection{Beweis - Anmerkung \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofE}[1]
+{\subsubsection{Beweis - Beispiel \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+
+% Superimpose symbols with offset
+\newcommand\X[1]{\kern#1ex}
+\newcommand\Y[2]{\raisebox{#1ex}{#2}}
+\newcommand\FH[2][1]{\scalebox{-#1}[#1]{#2}}
+\newcommand\FV[2][1]{\R{180}{\FH[#1]{#2}}}
+\newcommand\Rot[2]{\rotatebox[origin=c]{#1}{#2}}
+\newcommand\SC[2]{\scalebox{#1}{#2}}
+\newcommand\mo[2][c]{%
+  \bgroup%
+  \setstackEOL{ }% 
+  \setstackgap{L}{0pt}%
+  \Longstack[#1]{#2}%
+  \egroup%
+}
+
+\newcommand\ZZ{\mo{\Y{.45}{Z} \Y{-.45}{\X{-.5}Z}}}
