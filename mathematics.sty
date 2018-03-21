@@ -24,6 +24,8 @@
 \newcommand{\folge}[2]{\left( #1_{#2}\right)_{#2\in\N}}
 \newcommand{\tfolge}[3]{\left( #1_{#2_{#3}}\right)_{#3\in\N}}
 
+\newcommand{\longto}{\longrightarrow}
+
 \newcommand{\dif}{\;\mathrm{d}}
 
 \newcommand{\dx}[2][]{\frac{d}{dx^{#1}}\left(#2\right)}
@@ -43,6 +45,13 @@
 
 % increase the max. numbers of columns of matrizes (pmatrix, bmatrix, matrix)
 \setcounter{MaxMatrixCols}{20}
+
+% nice spacing after \forall and \exists
+\let\oldforall\forall
+\renewcommand{\forall}{\oldforall\:}
+
+\let\oldexists\exists
+\renewcommand{\exists}{\oldexists\:}
 
 % Umlauts in maths env
 \newcommand{\mumlaut}[1]{\ddot{#1}}
