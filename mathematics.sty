@@ -274,6 +274,16 @@
 {\subsubsection{Beweis - Beispiel \ref{sec:#1}}\label{proof:#1}}
 {\QEDA}
 
+% references, easier to click with the hyperref package
+\newcommand{\bref}[2]{\textcolor{maincolor}{\hyperref[sec:#1]{#2~\ref*{sec:#1}}}} % not related to Henkel
+\newcommand{\rdefinition}[1]{\bref{#1}{Definition}}
+\newcommand{\rlemma}[1]{\bref{#1}{Lemma}}
+\newcommand{\rsatz}[1]{\bref{#1}{Satz}}
+\newcommand{\rbeispiel}[1]{\bref{#1}{Beispiel}}
+\newcommand{\ranmerkung}[1]{\bref{#1}{Anmerkung}}
+\newcommand{\rtheorem}[1]{\bref{#1}{Theorem}}
+\newcommand{\rkorollar}[1]{\bref{#1}{Korollar}}
+
 % Superimpose symbols with offset
 \newcommand\X[1]{\kern#1ex}
 \newcommand\Y[2]{\raisebox{#1ex}{#2}}
