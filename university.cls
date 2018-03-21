@@ -50,6 +50,7 @@
 \newcommand{\cmpreface}{
 \pagenumbering{roman}
 \part*{Einführung}
+\addcontentsline{toc}{part}{Einführung}
 \section*{Vorwort}
 \addcontentsline{toc}{section}{Vorwort}
 }
