@@ -4,6 +4,7 @@
 #include:amssymb
 #include:amsthm
 #include:xstring
+#include:tkz-euclide
 
 \bb{text}#m
 \N#m
