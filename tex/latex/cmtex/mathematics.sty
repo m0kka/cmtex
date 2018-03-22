@@ -20,15 +20,17 @@
 \newcommand{\K}{\bb{K}}
 \newcommand{\nullset}{\{0\}}
 
+\let\lker\ker
+\renewcommand{\ker}[1]{\mathrm{ker}\left(#1\right)}
 \newcommand{\im}[1]{\mathrm{im}\left(#1\right)}
 \newcommand{\folge}[2]{\left( #1_{#2}\right)_{#2\in\N}}
 \newcommand{\tfolge}[3]{\left( #1_{#2_{#3}}\right)_{#3\in\N}}
 
+\newcommand{\nullvr}{\overrightarrow{0}}
 \newcommand{\longto}{\longrightarrow}
-
 \newcommand{\dif}{\;\mathrm{d}}
+\newcommand{\dx}[2][]{\frac{\dif}{\dif x^{#1}}\left(#2\right)}
 
-\newcommand{\dx}[2][]{\frac{d}{dx^{#1}}\left(#2\right)}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\vektor}[1]{\begin{pmatrix}#1\end{pmatrix}}
@@ -106,10 +108,6 @@
 \newenvironment{ida}[1]{\item[Induktionsanfang]$#1$}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
 \newenvironment{ids}[2]{\item[Induktionsschritt]$#1\to#2$\\Angenommen die Behauptung gelte für $#1\in\N$.\\
 \ZZ: Die Behauptung gilt für $#2$.\\}{}
-
-\let\lker\ker
-
-\renewcommand{\ker}[1]{\mathrm{ker}\left(#1\right)}
 
 \allowdisplaybreaks
 \newcommand{\br}{~\\}
@@ -208,52 +206,52 @@
 
 
 \newenvironment{definition}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mDefinition} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition}}
-{\begin{mDefinition}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mDefinition} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition}}
+	{\begin{mDefinition}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Definition (#1)}}
+	\ignorespaces}
 {\end{mDefinition}}
 
 \newenvironment{satz}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
-{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
+	{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
+	\ignorespaces}
 {~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mSatz}}
 
 \newenvironment{lemma}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
-{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
+	{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
+	\ignorespaces}
 {~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mLemma}}
 
 \newenvironment{corollary}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
-{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
+	{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
+	\ignorespaces}
 {~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mCorollary}}
 
 \newenvironment{theorem}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
-{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
+	{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
+	\ignorespaces}
 {~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mTheorem}}
 
 \newenvironment{remark}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mRemark} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung}}
-{\begin{mRemark}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mRemark} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung}}
+	{\begin{mRemark}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung (#1)}}
+	\ignorespaces}
 {\hfill\ensuremath{\lozenge}\end{mRemark}}
 
 \newenvironment{example}[1][none]
-{\ifthenelse{\equal{#1}{none}}
-{\begin{mExample} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel}}
-{\begin{mExample}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel (#1)}}
-\ignorespaces}
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mExample} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel}}
+	{\begin{mExample}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel (#1)}}
+	\ignorespaces}
 {\hfill\ensuremath{\lozenge}\end{mExample}}
 
 % Proof definitions
