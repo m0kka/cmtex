@@ -6,8 +6,9 @@
 
 \code{code}
 
-\cmpreface
-\cmtodo
-\cmtoc
-\cmcontent
-\cmaddendum
+\introduction
+\makepreface
+\maketodo
+\maketoc
+\content
+\addendum

@@ -47,31 +47,34 @@
 \fi
 \newcommand{\code}[1]{\lstinline{#1}}
 
-\newcommand{\cmpreface}{
+\newcommand{\introduction}{
 \pagenumbering{roman}
 \part*{Einführung}
+}
+
+\newcommand{\makepreface}{
 \addcontentsline{toc}{part}{Einführung}
 \section*{Vorwort}
 \addcontentsline{toc}{section}{Vorwort}
 }
 
-\newcommand{\cmtodo}{
+\newcommand{\maketodo}{
 \addcontentsline{toc}{section}{Liste der noch zu erledigenden Punkte}
 \listoftodos
 }
 
-\newcommand{\cmtoc}{
+\newcommand{\maketoc}{
 \addcontentsline{toc}{section}{Inhaltsverzeichnis}
 {\renewcommand{\baselinestretch}{0.8}\tableofcontents}
 \newpage
 }
 
-\newcommand{\cmcontent}{
+\newcommand{\content}{
 \pagenumbering{arabic}
 \part{Hauptteil}
 }
 
-\newcommand{\cmaddendum}{
+\newcommand{\addendum}{
 \setcounter{section}{0}
 \renewcommand{\thesection}{\roman{section}}
 \renewcommand{\theHsection}{\roman{section}}
