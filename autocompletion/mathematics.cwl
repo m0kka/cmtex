@@ -105,3 +105,8 @@ n
 \rkorollar{korollar}#r
 
 \ZZ
+
+#include:tcolorbox
+\notiz{text}
+\rmrk{text}
+\wichtig{text}

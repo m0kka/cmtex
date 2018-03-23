@@ -319,3 +319,36 @@
 }
 
 \newcommand\ZZ{\mo{\Y{.45}{Z} \Y{-.45}{\X{-.5}Z}}}
+
+% In-line notes and remarks
+\RequirePackage{tcolorbox}
+\newcommand\cmtcbnoteset{
+ \tcbset{width=\linewidth,
+	colback={white},
+	fonttitle=\bfseries\sffamily\color{maincolor},
+	colframe=maincolor!5,
+	title filled=false,
+	boxrule=1pt,
+	arc=0mm}
+}
+\newcommand\cmtcbrmrkset{
+ \tcbset{width=\linewidth,
+	colback={white},
+	fonttitle=\bfseries\sffamily\color{secondcolor},
+	colframe=secondcolor!5,
+	title filled=false,
+	boxrule=1pt,
+	arc=0mm}
+}
+\newcommand\cmtcbimpset{
+ \tcbset{width=\linewidth,
+	colback={white},
+	fonttitle=\bfseries\sffamily\color{thirdcolor},
+	colframe=thirdcolor!5,
+	title filled=false,
+	boxrule=1pt,
+	arc=0mm}
+}
+\newcommand{\notiz}[1]{\cmtcbnoteset\begin{tcolorbox}[title={Notiz:}]#1\end{tcolorbox}}
+\newcommand{\rmrk}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Anmerkung:}]#1\end{tcolorbox}}
+\newcommand{\wichtig}[1]{\cmtcbimpset\begin{tcolorbox}[title={Wichtig:}]#1\end{tcolorbox}}
