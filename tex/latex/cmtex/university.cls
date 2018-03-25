@@ -84,3 +84,8 @@
 \part{Addenda}
 }
 
+\let\oldlistoffigures\listoffigures
+\renewcommand{\listoffigures}{
+\oldlistoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+}
