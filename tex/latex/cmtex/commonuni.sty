@@ -16,6 +16,9 @@
 \RequirePackage{marvosym}
 \RequirePackage{titlesec}
 \RequirePackage{textcomp}
+\RequirePackage[a4paper,top=1in, bottom=1.1in, left=1.35in, right=1.35in]{geometry} % modification of the page margins
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
 \RequirePackage{hyperref}
 \hypersetup{%
     pdfencoding=auto
@@ -121,6 +124,21 @@
 \end{titlepage}
 \newpage
 }
+
+% fancyhdr setup
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{ \markright{#1} }
+
+\rfoot{Seite \thepage \hspace{1pt} von \pageref{LastPage}}
+\lfoot{\cmauthor{}, \cmsemester}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\lhead{\thesection.\rightmark}
+\rhead{\cmsubject{} - \cmtitle{}}
+
+
 
 
 
