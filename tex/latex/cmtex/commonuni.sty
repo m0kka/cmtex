@@ -19,6 +19,7 @@
 \RequirePackage[a4paper,top=1in, bottom=1.1in, left=1.35in, right=1.35in]{geometry} % modification of the page margins
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
+\RequirePackage{imakeidx}
 \RequirePackage{hyperref}
 \hypersetup{%
     pdfencoding=auto
@@ -63,6 +64,9 @@
 \titleformat{\section}{\Large\bfseries\sffamily\color{maincolor}}{}{0em}{}
 \titleformat*{\subsection}{\large\bfseries\sffamily\color{maincolor!70}}
 \titleformat*{\subsubsection}{\scshape\sffamily\color{maincolor!80}}
+
+% Enable indexing
+\makeindex[columns=3, title=Sätze aus der Vorlesung, intoc]
 
 % todo-notes
 \ifcolorized
