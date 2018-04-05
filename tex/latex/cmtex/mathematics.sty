@@ -21,9 +21,9 @@
 \newcommand{\K}{\bb{K}}
 \newcommand{\nullset}{\{0\}}
 
-\let\lker\ker
-\renewcommand{\ker}[1]{\mathrm{ker}\left(#1\right)}
-\newcommand{\im}[1]{\mathrm{im}\left(#1\right)}
+
+\DeclareMathOperator\range{range}
+\DeclareMathOperator\im{im}
 \newcommand{\folge}[2]{\left( #1_{#2}\right)_{#2\in\N}}
 \newcommand{\tfolge}[3]{\left( #1_{#2_{#3}}\right)_{#3\in\N}}
 
@@ -240,28 +240,28 @@
 	{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
 	{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
 	\ignorespaces}
-{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mSatz}}
+{~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mSatz}}
 
 \newenvironment{lemma}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
 	{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
 	\ignorespaces}
-{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mLemma}}
+{~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mLemma}}
 
 \newenvironment{corollary}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
 	{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
 	\ignorespaces}
-{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mCorollary}}
+{~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mCorollary}}
 
 \newenvironment{theorem}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
 	{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
 	\ignorespaces}
-{~\\\smallskip\hyperref[proof:\themDefinition]{\textit{Beweis.}}\end{mTheorem}}
+{~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mTheorem}}
 
 \newenvironment{remark}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
@@ -283,7 +283,7 @@
  $\triangle$
 \end{flushright}}
 
-\newcommand{\proofhere}{\br\smallskip\hyperref[proof:\themDefinition]{Beweis.}}
+\newcommand{\proofhere}{\br\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}}
 
 \newenvironment{proofofS}[1]
 {\subsubsection{Beweis - Satz \ref{sec:#1}}\label{proof:#1}}
