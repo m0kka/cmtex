@@ -4,7 +4,6 @@
 \ProvidesPackage{commonuni}[Common style definitions]
 
 \RequirePackage{fontspec}
-\RequirePackage[ngerman]{babel}
 \RequirePackage{enumitem, listliketab, tabu, multicol, microtype}
 \RequirePackage{graphicx}
 \RequirePackage{stackengine}
@@ -34,13 +33,21 @@
 % Process package options
 \newif\ifcolorized\colorizedtrue
 \newif\ifdisplayrightside\displayrightsidefalse
+\newif\ifenglish\englishfalse
 \DeclareOption{print}{\colorizedfalse}
+\DeclareOption{english}{\englishtrue}
 \DeclareOption{rightside}{\displayrightsidetrue}
 \DeclareOption{sans}{\setmainfont{Calibri}}
 \DeclareOption*{\PackageError{commonstyles}{One or more of the provided options does not exist.}{Maybe spell-checking helps?}}
 
 \ProcessOptions*
 
+\ifenglish
+	\RequirePackage[english]{babel}
+\else
+	\RequirePackage[ngerman]{babel}
+\fi
+	
 % Color setup
 \ifcolorized
 	\colorlet{maincolor}{MidnightBlue}
@@ -66,13 +73,25 @@
 \titleformat*{\subsubsection}{\scshape\sffamily\color{maincolor!80}}
 
 % Enable indexing
-\makeindex[columns=3, title=Sätze aus der Vorlesung, intoc]
+\ifenglish
+	\makeindex[columns=3, title=Index of Lecture Theorems, intoc]
+\else
+	\makeindex[columns=3, title=Sätze aus der Vorlesung, intoc]
+\fi
 
 % todo-notes
-\ifcolorized
-	\RequirePackage[ngerman, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
+\ifenglish
+	\ifcolorized
+		\RequirePackage[ngerman, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
+	\else
+		\RequirePackage[ngerman, disable]{todonotes}
+	\fi
 \else
-	\RequirePackage[ngerman, disable]{todonotes}
+	\ifcolorized
+		\RequirePackage[ngerman, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
+	\else
+		\RequirePackage[ngerman, disable]{todonotes}
+	\fi
 \fi
 
 % Common formatting
@@ -134,7 +153,12 @@
 \fancyhf{}
 \renewcommand{\sectionmark}[1]{ \markright{#1} }
 
-\rfoot{Seite \thepage \hspace{1pt} von \pageref{LastPage}}
+\ifenglish
+	\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\else
+	\rfoot{Seite \thepage \hspace{1pt} von \pageref{LastPage}}
+\fi
+
 \lfoot{\cmauthor{}, \cmsemester}
 
 \renewcommand{\headrulewidth}{1pt}

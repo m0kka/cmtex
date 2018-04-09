@@ -6,6 +6,12 @@
 
 % Handle options
 
+\newif\ifenglish\englishfalse
+\DeclareOption{english}{
+	\englishtrue
+	\PassOptionsToPackage{english}{commonstyles}
+}
+
 \newif\ifcolorized
 \DeclareOption{print}{
 	\colorizedfalse
@@ -49,29 +55,52 @@
 
 \newcommand{\introduction}{
 \pagenumbering{roman}
-\part*{Einführung}
+\ifenglish
+	\part*{Introduction}
+	\addcontentsline{toc}{part}{Introduction}
+\else
+	\part*{Einführung}
+	\addcontentsline{toc}{part}{Einführung}
+\fi
 }
 
 \newcommand{\makepreface}{
-\addcontentsline{toc}{part}{Einführung}
-\section*{Vorwort}
-\addcontentsline{toc}{section}{Vorwort}
+\ifenglish
+	\section*{Preface}
+	\addcontentsline{toc}{section}{Preface}
+\else
+	\section*{Vorwort}
+	\addcontentsline{toc}{section}{Vorwort}
+\fi
 }
 
 \newcommand{\maketodo}{
-\addcontentsline{toc}{section}{Liste der noch zu erledigenden Punkte}
-\listoftodos
+\ifenglish
+	\addcontentsline{toc}{section}{To-Do}
+	\listoftodos[To-Do]
+\else
+	\addcontentsline{toc}{section}{Liste der noch zu erledigenden Punkte}
+	\listoftodos
+\fi
 }
 
 \newcommand{\maketoc}{
-\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+\ifenglish
+	\addcontentsline{toc}{section}{Table of Contents}
+\else
+	\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+\fi
 {\renewcommand{\baselinestretch}{0.8}\tableofcontents}
 \newpage
 }
 
 \newcommand{\content}{
 \pagenumbering{arabic}
-\part{Hauptteil}
+\ifenglish
+	\part{Main Section}
+\else
+	\part{Hauptteil}
+\fi
 }
 
 \newcommand{\addendum}{
@@ -87,5 +116,9 @@
 \let\oldlistoffigures\listoffigures
 \renewcommand{\listoffigures}{
 \oldlistoffigures
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\ifenglish
+	\addcontentsline{toc}{section}{List of Figures}
+\else
+	\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\fi
 }
