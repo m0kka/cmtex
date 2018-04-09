@@ -10,6 +10,7 @@
 \DeclareOption{english}{
 	\englishtrue
 	\PassOptionsToPackage{english}{commonstyles}
+	\PassOptionsToPackage{english}{mathematics}
 }
 
 \newif\ifcolorized
@@ -120,5 +121,15 @@
 	\addcontentsline{toc}{section}{List of Figures}
 \else
 	\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\fi
+}
+
+\let\oldlistoftables\listoftables
+\renewcommand{\listoftables}{
+\oldlistoftables
+\ifenglish
+	\addcontentsline{toc}{section}{List of Tables}
+\else
+	\addcontentsline{toc}{section}{Verzeichnis der Tabellen}
 \fi
 }

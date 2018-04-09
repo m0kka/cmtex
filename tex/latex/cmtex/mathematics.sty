@@ -7,7 +7,9 @@
 \RequirePackage{tkz-euclide}
 
 \newif\ifcolorized\colorizedtrue
+\newif\ifenglish\englishfalse
 \DeclareOption{print}{\colorizedfalse}
+\DeclareOption{english}{\englishtrue}
 \ProcessOptions\relax
 
 % Utility maths
@@ -121,16 +123,47 @@
 \renewcommand{\mvchr}[1]{\mbox{\mvs\symbol{#1}}}
 
 % Environment and commands for inductive proofs
-\newcommand{\idv}{\item[Induktionsvoraussetzung]}
-\newcommand{\idb}{\item[Induktionsbehauptung]}
+\ifenglish
+	\newcommand{\idv}{\item[Induction Hypothesis]}
+	\newcommand{\idb}{\item[Induction Assertion]}
+\else
+	\newcommand{\idv}{\item[Induktionsvoraussetzung]}
+	\newcommand{\idb}{\item[Induktionsbehauptung]}
+\fi
 
 \newenvironment{idp}
-{\paragraph{Beweis durch Induktion.}\begin{description}}
-{\end{description}Die Behauptung folgt durch Induktion.}
+{
+\ifenglish
+	\paragraph{Proof by Induction.}
+\else
+	\paragraph{Beweis durch Induktion.}
+\fi
+\begin{description}
+}
+{
+\end{description}
+\ifenglish
+	The hypothesis follows by induction.
+\else
+	Die Behauptung folgt durch Induktion.
+\fi
+}
 
-\newenvironment{ida}[1]{\item[Induktionsanfang]$#1$}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
-\newenvironment{ids}[2]{\item[Induktionsschritt]$#1\to#2$\\Angenommen die Behauptung gelte für $#1\in\N$.\\
-\ZZ: Die Behauptung gilt für $#2$.\\}{}
+\ifenglish
+	\newenvironment{ida}[1]{\item[Induction Start]$#1$}{\noindent The hypothesis is true for the induction start.\\}
+\else
+	\newenvironment{ida}[1]{\item[Induktionsanfang]$#1$}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
+\fi
+
+\newenvironment{ids}[2]{
+\ifenglish
+	\item[Induction Step]$#1\to#2$\\Assume the hypothesis is true for $#1\in\N$.\\
+	\ZZ: The hypothesis is true for $#2$.\\
+\else
+	\item[Induktionsschritt]$#1\to#2$\\Angenommen die Behauptung gelte für $#1\in\N$.\\
+	\ZZ: Die Behauptung gilt für $#2$.\\
+\fi
+}{}
 
 \allowdisplaybreaks
 \newcommand{\br}{~\\}
@@ -163,25 +196,50 @@
  \providecommand{\mDefinitionautorefname}{Abschnitt}
 }
 
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofSautorefname}{Beweis}
 }
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofLautorefname}{Beweis}
 }
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofCautorefname}{Beweis}
 }
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofTautorefname}{Beweis}
 }
 
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofRautorefname}{Beweis}
 }
 
-\addto\extrasgerman{
+\addto\extrasngerman{
  \providecommand{\proofofEautorefname}{Beweis}
+}
+
+\addto\extrasenglish{
+ \providecommand{\mDefinitionautorefname}{Section}
+}
+
+\addto\extrasenglish{
+ \providecommand{\proofofSautorefname}{Proof}
+}
+\addto\extrasenglish{
+ \providecommand{\proofofLautorefname}{Proof}
+}
+\addto\extrasenglish{
+ \providecommand{\proofofCautorefname}{Proof}
+}
+\addto\extrasenglish{
+ \providecommand{\proofofTautorefname}{Proof}
+}
+
+\addto\extrasenglish{
+ \providecommand{\proofofRautorefname}{Proof}
+}
+
+\addto\extrasenglish{
+ \providecommand{\proofofEautorefname}{Proof}
 }
 
 \newtheoremstyle{sDefinition}
@@ -218,14 +276,30 @@
 \newtheorem{mDefinition}{Definition}[subsection]
 
 \theoremstyle{sSatz}
-\newtheorem{mSatz}[mDefinition]{Satz}
+\ifenglish
+	\newtheorem{mSatz}[mDefinition]{Proposition}
+\else
+	\newtheorem{mSatz}[mDefinition]{Satz}
+\fi
 \newtheorem{mLemma}[mDefinition]{Lemma}
-\newtheorem{mCorollary}[mDefinition]{Korollar}
+\ifenglish
+	\newtheorem{mCorollary}[mDefinition]{Corollary}
+\else
+	\newtheorem{mCorollary}[mDefinition]{Korollar}
+\fi
 \newtheorem{mTheorem}[mDefinition]{Theorem}
 
 \theoremstyle{sRemark}
-\newtheorem{mRemark}[mDefinition]{Anmerkung}
-\newtheorem{mExample}[mDefinition]{Beispiel}
+\ifenglish
+	\newtheorem{mRemark}[mDefinition]{Remark}
+\else
+	\newtheorem{mRemark}[mDefinition]{Anmerkung}
+\fi
+\ifenglish
+	\newtheorem{mExample}[mDefinition]{Example}
+\else
+	\newtheorem{mExample}[mDefinition]{Beispiel}
+\fi
 
 
 \newenvironment{definition}[1][none]
@@ -235,47 +309,101 @@
 	\ignorespaces}
 {\end{mDefinition}}
 
+\ifenglish
+\newenvironment{satz}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Proposition}}
+	{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Proposition (#1)}}
+	\ignorespaces}
+{~\\\smallskip\textit{Proof on page \pageref{proof:\themDefinition}.}\end{mSatz}}
+\else
 \newenvironment{satz}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mSatz} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz}}
 	{\begin{mSatz}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Satz (#1)}}
 	\ignorespaces}
 {~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mSatz}}
+\fi
 
+\ifenglish
+\newenvironment{lemma}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
+	{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
+	\ignorespaces}
+{~\\\smallskip\textit{Proof on page \pageref{proof:\themDefinition}.}\end{mLemma}}
+\else
 \newenvironment{lemma}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mLemma} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma}}
 	{\begin{mLemma}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Lemma (#1)}}
 	\ignorespaces}
 {~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mLemma}}
+\fi
 
+\ifenglish
+\newenvironment{corollary}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Corollary}}
+	{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Corollary (#1)}}
+	\ignorespaces}
+{~\\\smallskip\textit{Proof on page \pageref{proof:\themDefinition}.}\end{mCorollary}}
+\else
 \newenvironment{corollary}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mCorollary} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar}}
 	{\begin{mCorollary}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Korollar (#1)}}
 	\ignorespaces}
 {~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mCorollary}}
+\fi
 
+\ifenglish
+\newenvironment{theorem}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
+	{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
+	\ignorespaces}
+{~\\\smallskip\textit{Proof on page \pageref{proof:\themDefinition}.}\end{mTheorem}}
+\else
 \newenvironment{theorem}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mTheorem} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem}}
 	{\begin{mTheorem}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Theorem (#1)}}
 	\ignorespaces}
 {~\\\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}\end{mTheorem}}
+\fi
 
+\ifenglish
+\newenvironment{remark}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mRemark} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Remark}}
+	{\begin{mRemark}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Remark (#1)}}
+	\ignorespaces}
+{\hfill\ensuremath{\lozenge}\end{mRemark}}
+\else
 \newenvironment{remark}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mRemark} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung}}
 	{\begin{mRemark}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Anmerkung (#1)}}
 	\ignorespaces}
 {\hfill\ensuremath{\lozenge}\end{mRemark}}
+\fi
 
+\ifenglish
+\newenvironment{example}[1][none]
+	{\ifthenelse{\equal{#1}{none}}
+	{\begin{mExample} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Example}}
+	{\begin{mExample}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Example (#1)}}
+	\ignorespaces}
+{\hfill\ensuremath{\lozenge}\end{mExample}}
+\else
 \newenvironment{example}[1][none]
 	{\ifthenelse{\equal{#1}{none}}
 	{\begin{mExample} \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel}}
 	{\begin{mExample}[#1] \label{sec:\themDefinition} ~\\ \addcontentsline{toc}{subsubsection}{\protect\numberline{\themDefinition}Beispiel (#1)}}
 	\ignorespaces}
 {\hfill\ensuremath{\lozenge}\end{mExample}}
+\fi
 
 % Proof definitions
 \newcommand{\proofstep}{
@@ -283,8 +411,32 @@
  $\triangle$
 \end{flushright}}
 
-\newcommand{\proofhere}{\br\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}}
+\ifenglish
+	\newcommand{\proofhere}{\br\smallskip\textit{Proof on page \pageref{proof:\themDefinition}.}}
+\else
+	\newcommand{\proofhere}{\br\smallskip\textit{Beweis auf Seite \pageref{proof:\themDefinition}.}}
+\fi
 
+\ifenglish
+\newenvironment{proofofS}[1]
+{\subsubsection{Proof - Proposition \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofL}[1]
+{\subsubsection{Proof - Lemma \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofC}[1]
+{\subsubsection{Proof - Corollary \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofT}[1]
+{\subsubsection{Proof - Theorem \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofR}[1]
+{\subsubsection{Proof - Remark \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\newenvironment{proofofE}[1]
+{\subsubsection{Proof - Remark \ref{sec:#1}}\label{proof:#1}}
+{\QEDA}
+\else
 \newenvironment{proofofS}[1]
 {\subsubsection{Beweis - Satz \ref{sec:#1}}\label{proof:#1}}
 {\QEDA}
@@ -303,16 +455,33 @@
 \newenvironment{proofofE}[1]
 {\subsubsection{Beweis - Beispiel \ref{sec:#1}}\label{proof:#1}}
 {\QEDA}
+\fi
 
 % references, easier to click with the hyperref package
 \newcommand{\bref}[2]{\textcolor{maincolor}{\hyperref[sec:#1]{#2~\ref*{sec:#1}}}} % not related to Henkel
 \newcommand{\rdefinition}[1]{\bref{#1}{Definition}}
 \newcommand{\rlemma}[1]{\bref{#1}{Lemma}}
-\newcommand{\rsatz}[1]{\bref{#1}{Satz}}
-\newcommand{\rbeispiel}[1]{\bref{#1}{Beispiel}}
-\newcommand{\ranmerkung}[1]{\bref{#1}{Anmerkung}}
+\ifenglish
+	\newcommand{\rsatz}[1]{\bref{#1}{Proposition}}
+\else
+	\newcommand{\rsatz}[1]{\bref{#1}{Satz}}
+\fi
+\ifenglish
+	\newcommand{\rbeispiel}[1]{\bref{#1}{Example}}
+\else
+	\newcommand{\rbeispiel}[1]{\bref{#1}{Beispiel}}
+\fi
+\ifenglish
+	\newcommand{\ranmerkung}[1]{\bref{#1}{Remark}}
+\else
+	\newcommand{\ranmerkung}[1]{\bref{#1}{Anmerkung}}
+\fi
 \newcommand{\rtheorem}[1]{\bref{#1}{Theorem}}
-\newcommand{\rkorollar}[1]{\bref{#1}{Korollar}}
+\ifenglish
+	\newcommand{\rkorollar}[1]{\bref{#1}{Corollary}}
+\else
+	\newcommand{\rkorollar}[1]{\bref{#1}{Korollar}}
+\fi
 
 % Superimpose symbols with offset
 \newcommand\X[1]{\kern#1ex}
@@ -360,9 +529,15 @@
 	boxrule=1pt,
 	arc=0mm}
 }
+\ifenglish
+\newcommand{\notiz}[1]{\cmtcbnoteset\begin{tcolorbox}[title={Note:}]#1\end{tcolorbox}}
+\newcommand{\rmrk}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Remark:}]#1\end{tcolorbox}}
+\newcommand{\wichtig}[1]{\cmtcbimpset\begin{tcolorbox}[title={Important:}]#1\end{tcolorbox}}
+\else
 \newcommand{\notiz}[1]{\cmtcbnoteset\begin{tcolorbox}[title={Notiz:}]#1\end{tcolorbox}}
 \newcommand{\rmrk}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Anmerkung:}]#1\end{tcolorbox}}
 \newcommand{\wichtig}[1]{\cmtcbimpset\begin{tcolorbox}[title={Wichtig:}]#1\end{tcolorbox}}
+\fi
 
 % adding a \widebar command (https://tex.stackexchange.com/questions/16337/can-i-get-a-widebar-without-using-the-mathabx-package#60253)
 \let\save@mathaccent\mathaccent
@@ -435,12 +610,21 @@
 
 % (Sub)section prefaces
 \newcommand{\subsecpreface}{
+\ifenglish
+\subsubsection*{Introduction}
+\addcontentsline{toc}{subsubsection}{Introduction}
+\else
 \subsubsection*{Einführung}
 \addcontentsline{toc}{subsubsection}{Einführung}
+\fi
 }
 
 % Indexing macro
 \newcommand{\lectref}[1]{
-\notiz{In der Vorlesung: #1}
+\ifenglish
+	\notiz{In the lecture: #1}
+\else
+	\notiz{In der Vorlesung: #1}
+\fi
 \index{#1}
 }
