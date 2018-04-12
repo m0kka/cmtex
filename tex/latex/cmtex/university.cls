@@ -13,6 +13,8 @@
 	\PassOptionsToPackage{english}{mathematics}
 }
 
+\DeclareOption{noreformat}{\PassOptionsToPackage{noreformat}{commentstyles}}
+
 \newif\ifcolorized
 \DeclareOption{print}{
 	\colorizedfalse

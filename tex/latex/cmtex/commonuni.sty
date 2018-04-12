@@ -34,6 +34,8 @@
 \newif\ifcolorized\colorizedtrue
 \newif\ifdisplayrightside\displayrightsidefalse
 \newif\ifenglish\englishfalse
+\newif\ifreformat\reformattrue
+\DeclareOption{noreformat}{\reformatfalse}
 \DeclareOption{print}{\colorizedfalse}
 \DeclareOption{english}{\englishtrue}
 \DeclareOption{rightside}{\displayrightsidetrue}
@@ -99,12 +101,16 @@
 \setlength{\parindent}{0cm} % Set indent of paragraphs to zero
 \setlength{\parskip}{.5em} % Set paragraph spacing
 
+\ifreformat
+
 % Redefine formatting
 \let\oldtextbf\textbf
 \renewcommand{\textbf}[1]{\oldtextbf{\textcolor{secondcolor}{#1}}}
 
 \let\oldemph\emph
 \renewcommand{\emph}[1]{\oldemph{\textcolor{secondcolor}{#1}}}
+
+\fi
 
 % Title page setup
 \newcommand{\cmauthor}{Michael Merse}
