@@ -12,6 +12,10 @@
 	\PassOptionsToPackage{print}{mathematics}
 }
 
+\DeclareOption{noreformat}{
+ \PassOptionsToClass{noreformat}{university}
+}
+
 \DeclareOption*{\ClassError{university}{One or more of the provided options does not exist.}{Maybe spell-checking helps?}}
 
 \ProcessOptions*
