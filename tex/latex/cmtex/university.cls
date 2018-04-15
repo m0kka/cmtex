@@ -13,7 +13,7 @@
 	\PassOptionsToPackage{english}{mathematics}
 }
 
-\DeclareOption{noreformat}{\PassOptionsToPackage{noreformat}{commentstyles}}
+\DeclareOption{noreformat}{\PassOptionsToPackage{noreformat}{commonstyles}}
 
 \newif\ifcolorized
 \DeclareOption{print}{
