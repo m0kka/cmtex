@@ -38,6 +38,7 @@
 	language=Java,
 	showstringspaces=false,
 	breaklines=false,
+	numbers=left,
 	frameround=ffff,
 	frame=single,
 	rulecolor=\color{black},
