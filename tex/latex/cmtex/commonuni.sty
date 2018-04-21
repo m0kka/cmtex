@@ -19,6 +19,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
 \RequirePackage{imakeidx}
+\RequirePackage{afterpage}
 \RequirePackage{hyperref}
 \hypersetup{%
     pdfencoding=auto
@@ -173,10 +174,14 @@
 
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{1pt}
-\lhead{\thesection.\rightmark}
+\lhead{\thesection.\hskip -4.5em \rightmark}
 \rhead{\cmsubject{} - \cmtitle{}}
 
-
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 
 
 
