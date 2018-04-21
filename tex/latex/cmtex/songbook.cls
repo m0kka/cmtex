@@ -91,6 +91,7 @@
 }
 \newcommand\intro[1]{\cmcontainer{Vorspiel}{#1}}
 \newcommand\intermission[1]{\cmcontainer{Zwischenspiel}{#1}}
+\newcommand\outro[1]{\cmcontainer{Outro}{#1}}
   
   
 % Verses/Chords
