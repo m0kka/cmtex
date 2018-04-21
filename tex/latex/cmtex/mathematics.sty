@@ -629,3 +629,13 @@
 \fi
 \index{#1}
 }
+
+% custom commands for Gauss-Jordan matrices
+\newcommand{\matrixb}[2]{\left( \begin{matrix}#1\end{matrix} \, \middle\vert \, \begin{matrix}#2\end{matrix} \right)}
+\newcommand{\matrixbb}[3]{\left( \begin{matrix}#1\end{matrix} \, \middle\vert \, \begin{matrix}#2\end{matrix} \, \middle\vert \, \begin{matrix}#3\end{matrix} \right)}
+
+\let\det\legdet
+\DeclareMathOperator\det{det}
+
+\DeclareMathOperator\sgn{sgn}
+
