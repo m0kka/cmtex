@@ -235,3 +235,9 @@
  \album{}
  \capo{0}
 }
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
