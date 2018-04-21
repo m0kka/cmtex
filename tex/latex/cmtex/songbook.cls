@@ -219,7 +219,7 @@
  \capo{#4}
  \makesongtitle
  \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1, #2}
- \index{#1, #2}
+% \index{#1, #2}
  \title{}
  \artist{}
  \album{}
