@@ -2,7 +2,7 @@
 % https://github.com/jlnostr/texfiles
 
 \ProvidesClass{university}[Class for all things university]
-\LoadClass[a4paper,10pt,titlepage]{article}
+\LoadClass[a4paper,10pt,titlepage,twoside]{article}
 
 % Handle options
 
