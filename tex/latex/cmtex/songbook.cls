@@ -127,6 +127,8 @@
 \vskip 0.5em
 }
 
+\newenvironment{repline}{\hskip -1em $\mid\mid:$}{$:\mid\mid$}
+
 \newcommand\playchorus{\vskip em\textbf{Chorus:\dots}\vskip 1em}
   
 % Title stuff
