@@ -127,6 +127,16 @@
 \vskip 0.5em
 }
 
+\newenvironment{chorus*}{
+ \vskip 0.5em
+ \begin{addmargin}[4em]{2em}
+  \vskip -0.5em
+}{
+\end{addmargin}
+\par
+\vskip 0.5em
+}
+
 \newenvironment{repline}{\hskip -1em $\mid\mid:$}{$:\mid\mid$}
 
 \newcommand\playchorus{\vskip em\textbf{Chorus:\dots}\vskip 1em}
