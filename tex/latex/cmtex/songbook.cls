@@ -104,7 +104,7 @@
 }{
 \end{addmargin}
 \par
-\vskip 1em
+\vskip 0.5em
 }
 \newenvironment{strophe*}{
 \vskip 0.5em
@@ -113,7 +113,7 @@
 }{
 \end{addmargin}
 \par
-\vskip 1em
+\vskip 0.5em
 }
 
 \newenvironment{chorus}{
@@ -124,7 +124,7 @@
 }{
 \end{addmargin}
 \par
-\vskip 1em
+\vskip 0.5em
 }
 
 \newcommand\playchorus{\vskip em\textbf{Chorus:\dots}\vskip 1em}
@@ -176,6 +176,7 @@
 	}
 	\vskip -1em
 	\noindent\hfil\rule{\textwidth}{.4pt}\hfil
+	\vskip -0.5em
 }
 
 %TOC stuff
