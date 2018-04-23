@@ -142,9 +142,12 @@
 \vskip 0.5em
 }
 
+\newcommand\cmtabskip{0.5cm}
+\newcommand\tbnl{\\[\cmtabskip]}
+
 \newenvironment{repline}{\hskip -1em $\mid\mid:$}{$:\mid\mid$}
 
-\newcommand\playchorus{\vskip em\textbf{Chorus:\dots}\vskip 1em}
+\newcommand\playchorus{\vskip 0.5em\textbf{Chorus:\dots}\vskip 0.5em}
   
 % Title stuff
 \newcommand\cmartist{}
@@ -193,7 +196,7 @@
 	}
 	\vskip -1em
 	\noindent\hfil\rule{\textwidth}{.4pt}\hfil
-	\vskip -0.5em
+	%\vskip -0.5em
 }
 
 %TOC stuff
@@ -246,3 +249,5 @@
     \thispagestyle{empty}%
     \addtocounter{page}{-1}%
     \newpage}
+	
+\newcommand\br{~\\}
