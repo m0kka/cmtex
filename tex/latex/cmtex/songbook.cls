@@ -8,6 +8,7 @@
 \RequirePackage[dvipsnames,svgnames,usenames,table]{xcolor}
 \RequirePackage{imakeidx}
 \RequirePackage{ifthen}
+\RequirePackage{mathtools, amsmath, amsfonts, amssymb, amsthm}
 \RequirePackage{xparse}
 \RequirePackage{scrextend}
 \RequirePackage{hyperref}
@@ -81,6 +82,10 @@
 \newcommand\pause{\hskip 1em}
 \newcommand\Pause{\hskip 2em}
 \newcommand\PAUSE{\hskip 4em}
+
+\newcommand\susfour{$_{\text{sus4}}$}
+\newcommand\sustwo{$_{\text{sus2}}$}
+\newcommand\seven{$^{\text{7}}$}
 
 \newcommand\vpause[1]{\hskip #1em}
 
