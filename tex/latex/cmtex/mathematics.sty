@@ -639,3 +639,36 @@
 
 \DeclareMathOperator\sgn{sgn}
 
+% Proof contraptions
+\RequirePackage{scrextend}
+
+\newenvironment{beweisenv}{
+  \begin{addmargin}[1em]{2em}
+}{
+  \QEDA
+  \end{addmargin}
+}
+
+\newcommand\behauptung{
+  \end{addmargin}
+  \textbf{\underline{Behauptung:}}
+  \begin{addmargin}[1em]{2em}
+}
+
+\newcommand\annahme{
+  \end{addmargin}
+  \textbf{\underline{Angenommen:}}
+  \begin{addmargin}[1em]{2em}
+}
+
+\newcommand\voraussetzung{
+  \end{addmargin}
+  \textbf{\underline{Voraussetzungen:}}
+  \begin{addmargin}[1em]{2em}
+}
+
+\newcommand\beweiscom{
+  \end{addmargin}
+  \textbf{\underline{Beweis:}}
+  \begin{addmargin}[1em]{2em}
+}
