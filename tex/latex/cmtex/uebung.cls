@@ -103,6 +103,9 @@
     {Übersicht}%
 }
 
+% equation numbering
+\renewcommand{\theequation}{\arabic{section}\alph{subsection}.\roman{equation}}
+
 
 
 
