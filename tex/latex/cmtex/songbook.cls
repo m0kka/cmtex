@@ -11,7 +11,9 @@
 \RequirePackage{mathtools, amsmath, amsfonts, amssymb, amsthm}
 \RequirePackage{xparse}
 \RequirePackage{scrextend}
+\RequirePackage{wasysym}
 \RequirePackage{hyperref}
+\RequirePackage{setspace}
 \hypersetup{%
     pdfencoding=auto
     }
@@ -97,6 +99,9 @@
 \newcommand\intro[1]{\cmcontainer{Vorspiel}{#1}}
 \newcommand\intermission[1]{\cmcontainer{Zwischenspiel}{#1}}
 \newcommand\outro[1]{\cmcontainer{Outro}{#1}}
+
+\newcommand\musf{$\flat$}
+\newcommand\muss{$\sharp$}
   
   
 % Verses/Chords
