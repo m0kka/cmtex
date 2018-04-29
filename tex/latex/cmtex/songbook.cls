@@ -149,6 +149,7 @@
 
 \newcommand\cmtabskip{0.5cm}
 \newcommand\tbnl{\\[\cmtabskip]}
+\newcommand\settabskip[1]{\renewcommand\cmtabskip{#1}}
 
 \newenvironment{repline}{\hskip -1em $\mid\mid:$}{$:\mid\mid$}
 
