@@ -213,11 +213,6 @@
 \newcommand{\maketoc}{
 \fancyfoot[LE,RO]{\thepage} % Left side on Even pages; Right side on Odd pages
 \thispagestyle{fancy}
-\ifenglish
-	\addcontentsline{toc}{section}{Table of Contents}
-\else
-	\addcontentsline{toc}{section}{Inhaltsverzeichnis}
-\fi
 {\renewcommand{\baselinestretch}{0.8}\tableofcontents}
 \newpage
 }
@@ -241,7 +236,7 @@
  \album{#3}
  \capo{#4}
  \makesongtitle
- \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1, #2}
+ \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1 - #2}
 % \index{#1, #2}
  \title{}
  \artist{}
