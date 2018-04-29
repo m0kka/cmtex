@@ -108,7 +108,7 @@
 \newenvironment{strophe}{
 \vskip 0.5em
  \stepcounter{cstrophe}
- \textbf{Strophe \thecstrophe:}
+ \textbf{\textsc{Strophe} \thecstrophe:}
  \begin{addmargin}[1em]{2em}
   \vskip -0.5em
 }{
@@ -128,7 +128,7 @@
 
 \newenvironment{chorus}{
  \vskip 0.5em
- \textbf{Chorus:}
+ \textbf{\textsc{Chorus:}}
  \begin{addmargin}[4em]{2em}
   \vskip -0.5em
 }{
@@ -152,8 +152,7 @@
 
 \newenvironment{repline}{\hskip -1em $\mid\mid:$}{$:\mid\mid$}
 
-\newcommand\playchorus{\vskip 0.5em\textbf{Chorus:\dots}\vskip 0.5em}
-  
+\newcommand\playchorus{\vskip 0.5em\textbf{\textsc{Chorus:\dots}}\vskip 0.5em}
 % Title stuff
 \newcommand\cmartist{}
 \newcommand\artist[1]{\renewcommand\cmartist{#1}}
