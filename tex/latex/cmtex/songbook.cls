@@ -97,7 +97,7 @@
  {\vskip 0.5em\textbf{\textsc{#1}: \textcolor{maincolor}{#2}}\vskip 1em}
 }
 \newcommand\intro[1]{\cmcontainer{Vorspiel}{#1}}
-\newcommand\intermission[1]{\cmcontainer{Zwischenspiel}{#1}}
+\newcommand\interlude[1]{\cmcontainer{Zwischenspiel}{#1}}
 \newcommand\outro[1]{\cmcontainer{Outro}{#1}}
 
 \newcommand\musf{$\flat$}
