@@ -2,7 +2,7 @@
 
 \ProvidesClass{songbook}[2018/02/21 Write down songs in LaTeX]
 \LoadClass[11pt, twoside, a4paper]{book}
-\RequirePackage[a4paper,top=0.8in, bottom=1.1in, left=1.35in, right=1.35in]{geometry} % modification of the page margins
+\RequirePackage[a4paper,top=0.4in, bottom=.8in, left=1.0in, right=1.0in]{geometry} % modification of the page margins
 \RequirePackage{fancyhdr}
 \RequirePackage{fontspec}
 \RequirePackage[dvipsnames,svgnames,usenames,table]{xcolor}
@@ -24,6 +24,18 @@
 \setmainfont{Palatino Linotype}
 \setmonofont{Consolas}
 \setmonofont[Contextuals={Alternate}]{Fira Code}
+
+\makeatletter
+\renewcommand\normalsize{%
+\@setfontsize\normalsize{13pt}{13pt}% Will look incredibly crabbed if line height is too small
+\abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@%
+\abovedisplayshortskip \z@ \@plus2\p@%
+\belowdisplayshortskip 5\p@ \@plus2\p@ \@minus3\p@%
+\belowdisplayskip \abovedisplayskip%
+\let\@listi\@listI%
+}
+\normalsize  
+\makeatother
 
 % required to use the Fira Code ligatures
 \def\verbatim@nolig@list{}
@@ -78,7 +90,7 @@
 % Chords in running text
 % See: https://tex.stackexchange.com/a/147842
 \newcommand\chord[2][l]{%
-  \makebox[0pt][#1]{\begin{tabular}[b]{@{}l@{}}\textbf{\textcolor{maincolor}{#2}}\\\mbox{}\end{tabular}}}
+  \makebox[0pt][#1]{\renewcommand{\arraystretch}{1.2}\begin{tabular}[b]{@{}l@{}}\textbf{\textcolor{maincolor}{#2}}\\\mbox{}\end{tabular}}}
 
 % Intro/Intermission and all the stuff
 \newcommand\pause{\hskip 1em}
@@ -147,7 +159,7 @@
 \vskip 0.5em
 }
 
-\newcommand\cmtabskip{0.5cm}
+\newcommand\cmtabskip{0.2cm}
 \newcommand\tbnl{\\[\cmtabskip]}
 \newcommand\settabskip[1]{\renewcommand\cmtabskip{#1}}
 
