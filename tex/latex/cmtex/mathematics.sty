@@ -87,6 +87,9 @@
 \newcommand{\moe}{\mumlaut{o}}
 \newcommand{\mae}{\mumlaut{a}}
 
+% Command for Prä-Hilbert
+\newcommand\phr[1]{\ensuremath{\langle #1 \rangle}}
+
 % Äquivalenzklassen
 \newcommand{\aek}[1]{\ensuremath{\left[#1\right]}}
 \newcommand{\aekf}[1]{\ensuremath{\left[\left( #1\right)\right]}}
@@ -646,6 +649,12 @@
   \begin{addmargin}[1em]{2em}
 }{
   \QEDA
+  \end{addmargin}
+}
+
+\newenvironment{beweisenv*}{
+  \begin{addmargin}[1em]{2em}
+}{
   \end{addmargin}
 }
 
