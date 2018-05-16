@@ -115,6 +115,7 @@
 \newcommand\musf{$\flat$}
 \newcommand\muss{$\sharp$}
   
+\newcommand\song[1]{\newpage\input{songs/#1}}
   
 % Verses/Chords
 \newenvironment{strophe}{
