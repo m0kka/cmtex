@@ -131,7 +131,7 @@
 }
 \newenvironment{strophe*}{
 \vskip 0.5em
- \begin{addmargin}[1em]{2em}
+ \begin{addmargin}[1em]{1em}
   \vskip -0.5em
 }{
 \end{addmargin}
@@ -142,7 +142,7 @@
 \newenvironment{chorus}{
  \vskip 0.5em
  \textbf{\textsc{Chorus:}}
- \begin{addmargin}[4em]{2em}
+ \begin{addmargin}[4em]{1em}
   \vskip -0.5em
 }{
 \end{addmargin}
