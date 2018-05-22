@@ -20,7 +20,7 @@
 
 \ProcessOptions*
 
-\RequirePackage[a4paper,top=1in, bottom=1.1in, left=1.35in, right=1.35in]{geometry} % modification of the page margins
+\RequirePackage[a4paper,top=1in, bottom=1.1in, left=1.15in, right=1.15in]{geometry} % modification of the page margins
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
 
