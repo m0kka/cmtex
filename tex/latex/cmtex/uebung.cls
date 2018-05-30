@@ -93,6 +93,12 @@
 	\subsection{\alph{subsection})}
 }
 
+\newcommand{\subtasknr}
+{
+	\renewcommand{\thesubsection}{}
+	\subsection{\arabic{section}.\arabic{subsection}.}
+}
+
 \newenvironment{beweis}
 {\textit{Beweis.}\br}
 {\QEDA}
