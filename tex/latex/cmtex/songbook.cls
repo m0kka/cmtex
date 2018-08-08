@@ -49,12 +49,6 @@
 
 \ProcessOptions*
 
-\ifenglish
-	\RequirePackage[english]{babel}
-\else
-	\RequirePackage{babel-german}
-	\RequirePackage[ngerman]{babel}
-\fi
 
 % Color setup
 \ifcolorized
