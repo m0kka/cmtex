@@ -24,6 +24,8 @@
 \newcommand{\K}{\bb{K}}
 \newcommand{\nullset}{\{0\}}
 
+\newcommand\abs[1]{\left| #1\right|}
+
 
 \DeclareMathOperator\range{range}
 \DeclareMathOperator\im{im}
@@ -538,10 +540,12 @@
 \newcommand{\notiz}[1]{\cmtcbnoteset\begin{tcolorbox}[title={Note:}]#1\end{tcolorbox}}
 \newcommand{\rmrk}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Remark:}]#1\end{tcolorbox}}
 \newcommand{\wichtig}[1]{\cmtcbimpset\begin{tcolorbox}[title={Important:}]#1\end{tcolorbox}}
+\newcommand{\answer}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Answer:}]#1\end{tcolorbox}}
 \else
 \newcommand{\notiz}[1]{\cmtcbnoteset\begin{tcolorbox}[title={Notiz:}]#1\end{tcolorbox}}
 \newcommand{\rmrk}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Anmerkung:}]#1\end{tcolorbox}}
 \newcommand{\wichtig}[1]{\cmtcbimpset\begin{tcolorbox}[title={Wichtig:}]#1\end{tcolorbox}}
+\newcommand{\answer}[1]{\cmtcbrmrkset\begin{tcolorbox}[title={Antwort:}]#1\end{tcolorbox}}
 \fi
 
 % adding a \widebar command (https://tex.stackexchange.com/questions/16337/can-i-get-a-widebar-without-using-the-mathabx-package#60253)
@@ -649,8 +653,8 @@
 \newenvironment{beweisenv}{
   \begin{addmargin}[1em]{2em}
 }{
-  \QEDA
   \end{addmargin}
+  \QEDA
 }
 
 \newenvironment{beweisenv*}{
