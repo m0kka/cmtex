@@ -29,7 +29,7 @@
 \RequirePackage{mathematics}
 
 % Display code
-\RequirePackage{listingsutf8, lstautogobble, minted}
+\RequirePackage{listingsutf8, lstautogobble}
 \lstset{
 	basicstyle=\ttfamily\small,
 	columns=fullflexible,keepspaces,
