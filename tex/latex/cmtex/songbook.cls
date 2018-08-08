@@ -23,7 +23,6 @@
 \setsansfont{Corbel}
 \setmainfont{Palatino Linotype}
 \setmonofont{Consolas}
-\setmonofont[Contextuals={Alternate}]{Fira Code}
 
 \makeatletter
 \renewcommand\normalsize{%
