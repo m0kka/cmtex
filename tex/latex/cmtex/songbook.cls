@@ -52,8 +52,8 @@
 \ifenglish
 	\RequirePackage[english]{babel}
 \else
-	\RequirePackage[ngerman]{babel}
 	\RequirePackage{babel-german}
+	\RequirePackage[ngerman]{babel}
 \fi
 
 % Color setup
