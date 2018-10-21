@@ -2,7 +2,7 @@
 
 \ProvidesClass{songbook}[2018/02/21 Write down songs in LaTeX]
 \LoadClass[11pt, twoside, a4paper]{book}
-\RequirePackage[a4paper,top=0.4in, bottom=.8in, left=1.0in, right=1.0in]{geometry} % modification of the page margins
+\RequirePackage[a4paper,top=0.4in, bottom=.8in, left=0.7in, right=0.7in]{geometry} % modification of the page margins
 \RequirePackage{fancyhdr}
 \RequirePackage{fontspec}
 \RequirePackage[dvipsnames,svgnames,usenames,table]{xcolor}
@@ -12,6 +12,8 @@
 \RequirePackage{xparse}
 \RequirePackage{scrextend}
 \RequirePackage{wasysym}
+\RequirePackage{pdfpages}
+\RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage{setspace}
 \hypersetup{%
@@ -38,6 +40,9 @@
 
 % required to use the Fira Code ligatures
 \def\verbatim@nolig@list{}
+
+% graphicspath
+\graphicspath{{images/}{../images/}}
 
 % Process package options
 \newif\ifcolorized\colorizedtrue
@@ -188,6 +193,7 @@
  \pagenumbering{gobble}
   \begin{titlepage}
 	\centering
+	\vspace{5cm}
 	{\huge\bfseries\cmtitle\par}
 	\vspace{1cm}
 	{\Large\cmsubtitle\par}
@@ -257,4 +263,24 @@
     \addtocounter{page}{-1}%
     \newpage}
 	
+\newcommand\blankpagev{%
+    \null
+    \newpage}
+	
 \newcommand\br{~\\}
+
+\RequirePackage[svgnames]{xcolor}
+\ifpdf
+\RequirePackage{pdfcolmk}
+\fi
+%% drawing package
+\RequirePackage{tikz}
+\newlength{\drop}% for my convenience
+%% Generic publisher’s logo
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}}
+%% Some shades
+\definecolor{Dark}{gray}{0.2}
+\definecolor{MedDark}{gray}{0.4}
+\definecolor{Medium}{gray}{0.6}
+\definecolor{Light}{gray}{0.8}
+
