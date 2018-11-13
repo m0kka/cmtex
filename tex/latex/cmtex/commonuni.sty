@@ -89,9 +89,9 @@
 % todo-notes
 \ifenglish
 	\ifcolorized
-		\RequirePackage[ngerman, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
+		\RequirePackage[english, backgroundcolor=yellow!40, linecolor=orange, bordercolor=orange!40]{todonotes}
 	\else
-		\RequirePackage[ngerman, disable]{todonotes}
+		\RequirePackage[english, disable]{todonotes}
 	\fi
 \else
 	\ifcolorized
@@ -157,6 +157,20 @@
 	{\large\cmdate\par}
 \end{titlepage}
 \newpage
+}
+
+% override the maketitle{}
+\newcommand{\makesmalltitle}{
+	\newpage
+	\null{
+		{\Large \cmsubject\hskip 0.2em - \cmtitle }\hfill\cmdate\par
+		{\large \cmauthor, \cmauthorsuffix \par}
+	}
+	\vskip -1em
+	\noindent\hfil\rule{\textwidth}{.4pt}\hfil
+	\vskip -2em
+	
+	\thispagestyle{empty}
 }
 
 % fancyhdr setup
