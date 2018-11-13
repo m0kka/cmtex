@@ -74,9 +74,9 @@
 
 % Enable indexing
 \ifenglish
-	\makeindex[columns=3, title=Index, intoc]
+	\makeindex[columns=2, title=Index, intoc]
 \else
-	\makeindex[columns=3, title=Index, intoc]
+	\makeindex[columns=2, title=Index, intoc]
 \fi
 
 % Common formatting
@@ -249,8 +249,8 @@
  \album{#3}
  \capo{#4}
  \makesongtitle
- \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1 - #2}
-% \index{#1, #2}
+ \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1, #2}
+ \index{#2@\textbf{#2}!#1}
  \title{}
  \artist{}
  \album{}
