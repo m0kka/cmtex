@@ -90,6 +90,13 @@
 \newcommand{\moe}{\mumlaut{o}}
 \newcommand{\mae}{\mumlaut{a}}
 
+% n cross r 
+\newcommand{\ncr}[2]{
+	\ensuremath{
+		\begin{pmatrix}#1\\[0.4em]#2\end{pmatrix}
+	}
+}
+
 % Command for Prä-Hilbert
 \newcommand\phr[1]{\ensuremath{\langle #1 \rangle}}
 
@@ -150,25 +157,33 @@
 {
 \end{description}
 \ifenglish
-	The hypothesis follows by induction.
+	The hypothesis follows by induction.\QEDA
 \else
-	Die Behauptung folgt durch Induktion.
+	Die Behauptung folgt durch Induktion.\QEDA
 \fi
 }
 
 \ifenglish
-	\newenvironment{ida}[1]{\item[Induction Start]$#1$}{\noindent The hypothesis is true for the induction start.\\}
+	\newenvironment{ida}[1]{\item[Induction Start]\ensuremath{#1}}{\noindent The hypothesis is true for the induction start.\\}
 \else
-	\newenvironment{ida}[1]{\item[Induktionsanfang]$#1$}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
+	\newenvironment{ida}[1]{\item[Induktionsanfang]\ensuremath{#1}}{\noindent Die Behauptung gilt für den Induktionsanfang.\\}
 \fi
 
 \newenvironment{ids}[2]{
 \ifenglish
-	\item[Induction Step]$#1\to#2$\\Assume the hypothesis is true for $#1\in\N$.\\
-	\ZZ: The hypothesis is true for $#2$.\\
+	\item[Induction Step]\ensuremath{#1\to#2}\\
+	We have to show, that the hypothesis is true for \ensuremath{#2}.\\
 \else
-	\item[Induktionsschritt]$#1\to#2$\\Angenommen die Behauptung gelte für $#1\in\N$.\\
-	\ZZ: Die Behauptung gilt für $#2$.\\
+	\item[Induktionsschritt]\ensuremath{#1\to#2}\\
+	Es ist zu zeigen, dass die Behauptung gilt für \ensuremath{#2}.\\
+\fi
+}{}
+
+\newenvironment{idse}{
+\ifenglish
+	\item[Induction Step]\br
+\else
+	\item[Induktionsschritt]\br
 \fi
 }{}
 
@@ -646,6 +661,7 @@
 \DeclareMathOperator\det{det}
 
 \DeclareMathOperator\sgn{sgn}
+\DeclareMathOperator\key{key}
 
 % Proof contraptions
 \RequirePackage{scrextend}
@@ -685,4 +701,20 @@
   \end{addmargin}
   \textbf{\underline{Beweis:}}
   \begin{addmargin}[1em]{2em}
+}
+
+\newcommand\bigo[1]{
+	\ensuremath{\mathcal{O}\left( #1\right)}
+}
+
+\newcommand\bigom[1]{
+	\ensuremath{\Omega\left( #1\right)}
+}
+
+\newcommand\atime[2]{
+	\ensuremath{\mathsf{time}_{#1}\left( #2\right)}
+}
+
+\newcommand\bucket[1]{
+	\ensuremath{\mathcal{B}_{#1}}
 }
