@@ -107,9 +107,15 @@
 \newcommand\cmcontainer[2]{
  {\vskip 0.5em\textbf{\textsc{#1}: \textcolor{maincolor}{#2}}\vskip 1em}
 }
-\newcommand\intro[1]{\cmcontainer{Vorspiel}{#1}}
-\newcommand\interlude[1]{\cmcontainer{Zwischenspiel}{#1}}
-\newcommand\outro[1]{\cmcontainer{Outro}{#1}}
+\ifenglish
+	\newcommand\intro[1]{\cmcontainer{Intro}{#1}}
+	\newcommand\interlude[1]{\cmcontainer{Interlude}{#1}}
+	\newcommand\outro[1]{\cmcontainer{Outro}{#1}}
+\else
+	\newcommand\intro[1]{\cmcontainer{Vorspiel}{#1}}
+	\newcommand\interlude[1]{\cmcontainer{Zwischenspiel}{#1}}
+	\newcommand\outro[1]{\cmcontainer{Outro}{#1}}
+\fi
 
 \newcommand\musf{$\flat$}
 \newcommand\muss{$\sharp$}
@@ -118,24 +124,28 @@
   
 % Verses/Chords
 \newenvironment{strophe}{
-\vskip 0.5em
+ \vskip 0.5em
  \stepcounter{cstrophe}
- \textbf{\textsc{Strophe} \thecstrophe:}
+ \ifenglish
+	\textbf{\textsc{Verse} \thecstrophe:}
+ \else
+	\textbf{\textsc{Strophe} \thecstrophe:}
+ \fi
  \begin{addmargin}[1em]{2em}
-  \vskip -0.5em
+ \vskip -0.5em
 }{
-\end{addmargin}
-\par
-\vskip 0.5em
+ \end{addmargin}
+ \par
+ \vskip 0.5em
 }
 \newenvironment{strophe*}{
-\vskip 0.5em
+ \vskip 0.5em
  \begin{addmargin}[1em]{1em}
-  \vskip -0.5em
+ \vskip -0.5em
 }{
-\end{addmargin}
-\par
-\vskip 0.5em
+ \end{addmargin}
+ \par
+ \vskip 0.5em
 }
 
 \newenvironment{chorus}{
@@ -179,38 +189,15 @@
 \newcommand\cmcapo{0}
 \newcommand\capo[1]{\renewcommand\cmcapo{#1}}
 
-
-\newcommand\cmsubtitle{}
-\newcommand\subtitle[1]{\renewcommand\cmsubtitle{#1}}
-
-\newcommand\cmauthor{Michael Merse}
-\renewcommand\author[1]{\renewcommand\cmauthor{#1}}
-
-\newcommand\cmdate{\today}
-\newcommand\datum[1]{\renewcommand\cmdate{#1}}
-
-\newcommand\makebooktitle{
- \pagenumbering{gobble}
-  \begin{titlepage}
-	\centering
-	\vspace{5cm}
-	{\huge\bfseries\cmtitle\par}
-	\vspace{1cm}
-	{\Large\cmsubtitle\par}
-	\vspace{2cm}
-	{\Large\itshape\cmauthor\par}
-	\vfill
-	{\large\cmdate\par}
-   \end{titlepage}
-   \newpage
-   \pagenumbering{arabic}
-}
-
 \newcommand\makesongtitle{
  \fancyfoot[LE,RO]{\thepage} % Left side on Even pages; Right side on Odd pages
  \null{
 		{\LARGE\thesong. \cmtitle }\hfill{\LARGE\cmartist}\par
-		{\large \ifthenelse{\cmcapo = 0}{}{Capo: \cmcapo} \hfill aus: \cmalbum \par}
+		\ifenglish
+			{\large \ifthenelse{\cmcapo = 0}{}{Capo: \cmcapo} \hfill from: \cmalbum \par}
+		\else
+			{\large \ifthenelse{\cmcapo = 0}{}{Capo: \cmcapo} \hfill aus: \cmalbum \par}
+		\fi
 	}
 	\vskip -1em
 	\noindent\hfil\rule{\textwidth}{.4pt}\hfil
@@ -249,7 +236,7 @@
  \album{#3}
  \capo{#4}
  \makesongtitle
- \addcontentsline{toc}{section}{\protect\numberline{\thesong}#1, #2}
+ \addcontentsline{toc}{subsection}{\protect\numberline{\thesong}#1, #2}
  \index{#2@\textbf{#2}!#1}
  \title{}
  \artist{}
@@ -283,4 +270,35 @@
 \definecolor{MedDark}{gray}{0.4}
 \definecolor{Medium}{gray}{0.6}
 \definecolor{Light}{gray}{0.8}
+
+
+ % Sections
+\DeclareDocumentCommand\booksec{m m} {\begingroup% Words in their Hands
+  \drop = 3\baselineskip
+  \centering
+  \vspace*{4cm}\null
+  \vspace*{\drop}
+  {\fontsize{45}{55}\selectfont #1}\\[2cm]
+  {\Large\itshape #2}\\[1cm]
+  \vfill
+ \endgroup
+ \addcontentsline{toc}{chapter}{#1}
+ \addcontentsline{toc}{section}{#2}
+ \newpage
+ }
+ 
+ % Sections
+\DeclareDocumentCommand\booksecentry{m m} {\begingroup% Words in their Hands
+  \drop = 3\baselineskip
+  \centering
+  \vspace*{4cm}\null
+  \vspace*{\drop}
+  {\fontsize{45}{55}\selectfont #1}\\[2cm]
+  {\Large\itshape #2}\\[1cm]
+  \vfill
+ \endgroup
+ \addcontentsline{toc}{section}{#2}
+ \newpage
+ }
+ 
 
