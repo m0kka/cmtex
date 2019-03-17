@@ -99,6 +99,7 @@
 \newcommand\susfour{$_{\text{sus4}}$}
 \newcommand\sustwo{$_{\text{sus2}}$}
 \newcommand\seven{$^{\text{7}}$}
+\newcommand\addnine{$^{\text{add9}}$}
 
 \newcommand\vpause[1]{\hskip #1em}
 
