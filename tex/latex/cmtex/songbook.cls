@@ -47,9 +47,11 @@
 % Process package options
 \newif\ifcolorized\colorizedtrue
 \newif\ifenglish\englishfalse
+\newif\ifnon\nonfalse
 \DeclareOption{print}{\colorizedfalse}
 \DeclareOption{english}{\englishtrue}
 \DeclareOption{sans}{\setmainfont{Calibri}}
+\DeclareOption{non}{\nontrue}
 \DeclareOption*{\PackageError{commonstyles}{One or more of the provided options does not exist.}{Maybe spell-checking helps?}}
 
 \ProcessOptions*
@@ -193,7 +195,11 @@
 \newcommand\makesongtitle{
  \fancyfoot[LE,RO]{\thepage} % Left side on Even pages; Right side on Odd pages
  \null{
-		{\LARGE\thesong. \cmtitle }\hfill{\LARGE\cmartist}\par
+		\ifnon
+			{\LARGE\cmtitle }\hfill{\LARGE\cmartist}\par
+		\else
+			{\LARGE\thesong. \cmtitle }\hfill{\LARGE\cmartist}\par
+		\fi
 		\ifenglish
 			{\large \ifthenelse{\cmcapo = 0}{}{Capo: \cmcapo} \hfill from: \cmalbum \par}
 		\else
