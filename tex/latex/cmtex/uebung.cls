@@ -6,6 +6,7 @@
 % Handle options
 
 \newif\ifcolorized
+\newif\ifdisto\distofalse
 \DeclareOption{print}{
 	\colorizedfalse
 	\PassOptionsToPackage{print}{commonstyles}
@@ -15,6 +16,8 @@
 \DeclareOption{noreformat}{
  \PassOptionsToClass{noreformat}{university}
 }
+
+\DeclareOption{disto}{\distotrue}
 
 \DeclareOption*{\ClassError{university}{One or more of the provided options does not exist.}{Maybe spell-checking helps?}}
 
@@ -56,8 +59,14 @@
 	\null{
 		{\LARGE \cmsubject\hskip 0.2em - \cmtitle }\hfill\cmdate\par
 		\vskip .5em
-		{\large \cmauthor, \cmauthorsuffix \par}
-		{\textit{Übungsgruppe: \cmgroup} \par}
+		\ifdisto
+			{\large \cmauthor \par}
+			{\null}
+			{\null}
+		\else
+			{\large \cmauthor, \cmauthorsuffix \par}
+			{\textit{Übungsgruppe: \cmgroup} \par}
+		\fi
 	}
 	\vskip -5em
 	\begin{raggedright}\hfill\mbox{\rightsidecontent}\end{raggedright}
@@ -75,7 +84,11 @@
 
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{1pt}
-\lhead{\ifthenelse{\value{page}=1}{}{\cmauthor, \cmauthorsuffix}}
+\ifdisto
+	\lhead{\ifthenelse{\value{page}=1}{}{\cmauthor}}
+\else
+	\lhead{\ifthenelse{\value{page}=1}{}{\cmauthor, \cmauthorsuffix}}
+\fi
 \rhead{\ifthenelse{\value{page}=1}{}{\cmtitle\hskip 0.2em - \cmdate}}
 
 
